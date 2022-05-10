@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>JQUERY</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<script>
+
+    function onClickHtml(){
+        $("#divHTML").html("**HTML**"); // SET
+        console.log(".html() Div", $("#divHTML").html()); //GET
+    }
+
+    function onClickText(){
+        $("#texto").val("Test"); // SET
+        $("#p").text("Texto"); // SET
+        console.log(".Val() Texto", $("#texto").val()); //GET
+        console.log(".Text() p", $("#p").text()); //GET
+    }
+
+    function onClickVal(){
+        $("#checkbox").prop('checked', true); // SET
+        console.log(".Val() Checkbox", $("#checkbox").val()); //GET
+    }
+
+</script>
+
+<body id="body">
+    <div class="box">
+        <button  name="boton" onclick="onClickHtml()" >.HTML()</button> <br>
+        <button  name="boton" onclick="onClickText()" >.VAL()</button> <br>
+        <button  name="boton" onclick="onClickVal()" >.PROP()</button> <br>
+        <div class="divider"></div>
+        <div id="divHTML"></div>
+        <input  type="text" class="inputClass" id="texto"> <br>
+        <input type="checkbox" checked="true" id="checkbox" >
+        <p id="p">Prueba</p>
+    </div>
+</body>
+
+</html>
+

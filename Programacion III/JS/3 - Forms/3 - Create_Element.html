@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Formularios</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./main.css'>
+</head>
+<script>
+
+    var divCount = 0;
+
+    function onTecla(texto) {
+        addElement(texto);
+    }
+
+    function addElement(texto) {
+        // CREAMOS EL NUEVO ELEMENTO
+        var newDiv = document.createElement("input");
+        // AGREGAMOS LA CLASE AL ELEMENTO
+        newDiv.type = "date";
+        newDiv.id = self.divCount.toString();
+        newDiv.classList.add("Salida");
+        // SETEAMOS EL TEXTO DEL DIV
+        newDiv.innerHTML=texto.value;
+        // BUSCAMOS EL DIV PARA VER LA POSICIÓN EN LA CUAL COLOCAMOS EL NUEVO
+        var currentDiv = document.getElementById("SalidaBox");
+        // INSERTAMOS EL NUEVO ELEMENTO
+        document.body.insertBefore(newDiv, currentDiv);
+        self.divCount++;
+    }
+
+</script>
+
+<body id="body">
+    <div class="box" >
+        <input type="text" class="inputClass" name="texto" onkeyup="onTecla(this)" placeholder="onKeyUp"> <br>
+    </div>
+    <div class="box" id="SalidaBox"></div>
+</body>
+
+</html>
+</htl>

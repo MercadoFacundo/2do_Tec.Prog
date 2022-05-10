@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Arrays</title>
+</head>
+
+<body>
+    <script>
+        var frutas = ["Manzana", "Banana"];
+        
+        //Recorrer ARRAY
+        frutas.forEach(function(elemento, indice, array) {
+            console.log(elemento, indice);
+        });
+
+        //Agregar Elemento
+        frutas.push("Cereza");
+        //Quitar el Primer Elemento
+        frutas.shift();
+        //Quitar el Último
+        frutas.pop();
+        //Agregar al Inicio
+        frutas.unshift("Pera");
+        //Conocer el índice ó posición
+        console.log(frutas.indexOf("Pera"));
+        console.log(frutas);
+
+    </script>
+</body>
+
+</html>
+

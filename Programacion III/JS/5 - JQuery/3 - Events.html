@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>JQUERY</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<script>
+
+    $(document).ready(function () { 
+    // Workarround para que puedan escuchar los eventos una vez que este Listo el documento...
+        $(".botonera").click(function () {
+            alert("Clase Botonera!!!");
+        });
+
+        $("#buttonAdd").click(function () {
+            $("#divHTML").addClass("redBorder");
+            $("#divHTML").toggleClass("box box2", true);
+        });
+
+        $("#buttonRemove").mouseover(function () {
+            $("#divHTML").removeClass("redBorder");
+            $("#divHTML").toggleClass("box box2", false);
+        });
+    });
+
+</script>
+
+<body id="body">
+    <div id="box" class="box">
+        <button name="boton" id="buttonAdd">Add Class</button> <br>
+        <button name="boton" id="buttonRemove">Remove Class</button> <br>
+        <button class="botonera">Botonera</button>
+        <button class="botonera">Botonera2</button>
+        <div id="divHTML"></div>
+    </div>
+</body>
+</html>

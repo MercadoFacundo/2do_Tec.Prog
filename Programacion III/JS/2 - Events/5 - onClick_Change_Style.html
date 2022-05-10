@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Formularios</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./main_style.css'>
+</head>
+
+<!-- Con INNERHTML PODEMOS LEER EL CONTENIDO HTML DE UN TAG EN ESPECÍFICO -->
+<!-- Con el método style podemos cambiar el Estilo de cualquier elemento del DOM -->
+
+<script>
+    function onClickColor(boton){
+      document.getElementById("cube").style.background = boton.innerHTML;
+      document.getElementById("cube").innerHTML=boton.innerHTML;
+    }
+
+    function onClickTamanio(boton){
+      document.getElementById("cube").style.width=boton.innerHTML;
+      document.getElementById("cube").style.height=boton.innerHTML;
+    }
+</script>
+
+<body id="body">
+    <div class="box">
+        <button  class="inputClass" name="boton" onclick="onClickColor(this)" >Green</button> <br>
+        <button  class="inputClass" name="boton" onclick="onClickColor(this)" >Red</button> <br>
+        <button  class="inputClass" name="boton" onclick="onClickColor(this)" >Blue</button> <br>
+    </div>
+    <div class="box">
+        <div class="cube" id="cube"></div>
+    </div>
+
+    <div class="box">
+        <button  class="inputClass" name="boton" onclick="onClickTamanio(this)" >100px</button> <br>
+        <button  class="inputClass" name="boton" onclick="onClickTamanio(this)" >200px</button> <br>
+        <button  class="inputClass" name="boton" onclick="onClickTamanio(this)" >400px</button> <br>
+    </div>
+    
+</body>
+
+</html>
+</htl>

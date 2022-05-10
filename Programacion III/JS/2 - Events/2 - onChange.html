@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Formularios</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+
+<script>
+    function onChangeEvent(select){
+        alert(document.getElementById("Combo").value);
+    }
+</script>
+
+<body id="body">
+    <div class="box">
+        <select name="Combo" id="Combo" class="inputClass" onchange="onChangeEvent()">
+            <option value="valuePerro">Perro</option>
+            <option value="valueGato">Gato</option>
+            <option value="valuePerico">Perico</option>
+        </select>    
+    </div>
+</body>
+
+</html>
+</htl>

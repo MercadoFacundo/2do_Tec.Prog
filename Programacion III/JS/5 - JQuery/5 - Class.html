@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>JQUERY</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<script>
+
+    function onClickClass() {
+        $("#divHTML").addClass("redBorder");
+        $("#divHTML").toggleClass("box box2",true);
+    }
+
+    function onClickClassRemove() {
+        $("#divHTML").removeClass("redBorder");
+        $("#divHTML").toggleClass("box box2",false);
+    }
+
+</script>
+
+<body id="body">
+    <div id="box" class="box">
+        <button name="boton" onclick="onClickClass()">Add Class</button> <br>
+        <button name="boton" onclick="onClickClassRemove()">Remove Class</button> <br>
+        <div id="divHTML"></div>
+    </div>
+</body>
+
+</html>

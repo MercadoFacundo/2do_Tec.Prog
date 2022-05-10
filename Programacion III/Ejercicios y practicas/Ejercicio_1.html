@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*1) sumar todos los numeros del array
+        2) funcion que multiplique esa suma x algun numero por parametro
+        3) obtener el nombre de los numeros de cada digito*/
+
+        var Array = [1, 2, 3, 4, 5, 6, 7];
+        var suma = 0;
+
+
+        for (let i = 0; i < Array.length; i++) {
+            suma += Array[i];
+        }
+
+        console.log(suma);
+            // 2)
+        var mul = suma * 3;
+
+        console.log(mul);
+
+            // 3)
+
+        const descompuse = (Array)=>{
+            let nuevoArray = []
+            let veces = Array.toStrig();
+
+            for(let i = 0; i <= veces.length; i++){
+                let num = parseInt(veces[i])
+                switch (num) {
+                    case 0:
+                        newArray.push("cero")
+                        break;
+                    case 0:
+                        newArray.push("uno")
+                        break;
+                    case 1:
+                        newArray.push("dos")
+                        break;
+                    case 2:
+                        newArray.push("tres")
+                        break;
+                    case 3:
+                        newArray.push("cuatro")
+                        break;
+                    case 4:
+                        newArray.push("cinco")
+                        break;
+                    case 5:
+                        newArray.push("seis")
+                        break;
+                    case 6:
+                        newArray.push("siete")
+                        break;
+                    case 7:
+                }
+            }
+            return nuevoArray
+        }
+
+    </script>
+</body>
+</html>
