@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="”Content-Language”" content="”es”" />
+    <title>Función Ejercicio</title>
+  </head>
+
+  <body>
+    <script>
+      function retornarEnLetrasPractico(numero) {
+        var outputArray = [];
+        const enumLista = [
+          ["0", "cero"],
+          ["2", "dos"],
+          ["1", "uno"],
+          ["3", "tres"],
+          ["4", "cuatro"],
+          ["6", "seis"],
+          ["5", "cinco"],
+          ["7", "siete"],
+          ["9", "nueve"],
+          ["8", "ocho"],
+        ];
+        const numberString = numero.toString();
+        const arrayString = numberString.split("");
+        arrayString.forEach((element) => {
+          for (let num of enumLista) {
+            if (element === num[0]) outputArray.push(num[1]);
+          }
+        });
+        // Devolver el output Array con la forma => ["cuatro","tres","nueve"]
+        return outputArray;
+      }
+
+      const resultado = retornarEnLetrasPractico(482);
+
+      console.log(resultado);
+    </script>
+  </body>
+</html>
