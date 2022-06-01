@@ -1,0 +1,44 @@
+
+  
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+</head>
+
+<body>
+
+    <p id="text">JavaScript es un lenguaje de programación interpretado, dialecto del estándar ECMAScript. Se define como orientado a objetos, ​ basado en prototipos, imperativo, débilmente tipado y dinámico.</p>
+    <select name="colorBackground" id="colorBackground" onchange="handleChangeColorBackground()">
+        <option value="red">Red</option>
+        <option value="black">Black</option>
+        <option value="blue">Blue</option>
+    </select>
+    <select name="colorText" id="colorText" onchange="handleChangeColorText()">
+        <option value="green">Green</option>
+        <option value="yellow">Yellow</option>
+        <option value="aquamarine">Aquamarine</option>
+    </select>
+
+</body>
+
+<script>
+
+    const colorBackground = document.querySelector("#colorBackground")
+    const colorText = document.querySelector("#colorText")
+    const text  = document.querySelector("#text")
+
+    const handleChangeColorBackground =()=> {
+        text.style.backgroundColor = colorBackground.value
+    }
+    const handleChangeColorText =()=> {
+        text.style.color = colorText.value
+    }
+
+</script>
+
+</html>

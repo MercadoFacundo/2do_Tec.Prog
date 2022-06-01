@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lista</title>
+</head>
+<body>
+<h2>Notas</h2>
+
+<p>
+  <input id="inputTarea" type="text" placeholder="Ingrese las nuevas tareas aqui...">
+  <button onclick="Crear()">Crear</button>
+</p> 
+<span id="Completas">Tareas completadas: </span>
+<span id="lista">Tareas: </span>
+
+
+</body>
+
+<script>
+const lista = document.querySelector("#lista");
+
+function Crear() {
+        //crear lista
+        const item = document.createElement("li");
+        item.textContent = document.getElementById("inputTarea").value;
+
+        //crear checkbox
+        const newCheckBox = document.createElement('input');
+        //newCheckBox.type = "checkbox"
+
+        //
+        lista.appendChild(item);
+        lista.appendChild(newCheckBox);
+
+        //limpiar campo
+        document.getElementById("inputTarea").value=("");
+}
+/*
+var checkboxes = document.getElementById("form1").checkbox;
+
+var cont = 0; 
+
+for (var x=0; x < checkboxes.length; x++) {
+ if (checkboxes[x].checked) {
+  cont = cont + 1;
+ }
+}*/
+</script>
+</html>

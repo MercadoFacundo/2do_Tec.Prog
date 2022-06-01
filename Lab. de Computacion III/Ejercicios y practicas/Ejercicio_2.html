@@ -4,49 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lista</title>
+    <title>Ejercicio 2</title>
 </head>
 <body>
-<h2>Notas</h2>
+<h2>Perimetro y superficie de un rectangulo</h2>
+<p>Ingrese los valores:</p>
 
 <p>
-  <input id="inputTarea" type="text" placeholder="Ingrese las nuevas tareas aqui...">
-  <button onclick="Crear()">Crear</button>
-</p> 
-<span id="Completas">Tareas completadas: </span>
-<span id="lista">Tareas: </span>
+  <label>Base: </label>
+  <input id="inputBase" type="number">
+  <label>Altura: </label>
+  <input id="inputAltura" type="number">
+</p>
 
+<p>Resultado: 
+  <label id="Resultado" type="number"></label>
+</p>
 
-</body>
+<button onclick="CalPer()">Perimetro</button>
+<button onclick="CalSup()">Superficie</button>
 
 <script>
-const lista = document.querySelector("#lista");
-
-function Crear() {
-        //crear lista
-        const item = document.createElement("li");
-        item.textContent = document.getElementById("inputTarea").value;
-
-        //crear checkbox
-        const newCheckBox = document.createElement('input');
-        newCheckBox.type = "checkbox"
-
-        //
-        lista.appendChild(item);
-        lista.appendChild(newCheckBox);
-
-        //limpiar campo
-        document.getElementById("inputTarea").value=("");
+function CalPer(){
+  var Base = document.getElementById("inputBase").value;
+  var Altura = document.getElementById("inputAltura").value;
+  document.getElementById("Resultado").innerHTML=((Base*2)+(Altura*2));
+  document.getElementById("inputBase").value="";
+  document.getElementById("inputAltura").value=""; 
+}
+function CalSup(){
+  var Base = document.getElementById("inputBase").value;
+  var Altura = document.getElementById("inputAltura").value;
+  document.getElementById("Resultado").innerHTML=(Base*Altura);
+  document.getElementById("inputBase").value="";
+  document.getElementById("inputAltura").value=""; 
 }
 
-var checkboxes = document.getElementById("form1").checkbox;
 
-var cont = 0; 
-
-for (var x=0; x < checkboxes.length; x++) {
- if (checkboxes[x].checked) {
-  cont = cont + 1;
- }
-}
 </script>
+</body>
 </html>

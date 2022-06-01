@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+<h2>Conversor de temperaturas</h2>
+<p>Ingrese el valor de temperatura que desea convertir:</p>
+
+<p>
+  <label>Celsius:</label>
+  <input id="inputCelsius" type="number" placeholder="Celsius">
+  <button onclick="CalCelsius()">Calcular</button>
+</p>
+<p>
+  <label>Farenheit:</label>
+  <input id="inputFarenheit" type="number" placeholder="Celsius">
+  <button onclick="CalFarenheit()">Calcular</button>
+</p>
+<p>
+  <label>Kelvin:</label>
+  <input id="inputKelvin" type="number" placeholder="Celsius">
+  <button onclick="CalKelvin()">Calcular</button>
+</p>
+
+<script>
+function CalCelsius() {
+  var temp = document.getElementById("inputCelsius").value;
+  document.getElementById("inputFarenheit").value=((temp*9/5)+32);
+  document.getElementById("inputKelvin").value=(parseInt(temp)+273);
+}
+function CalFarenheit() {
+  var temp = document.getElementById("inputFarenheit").value;
+  document.getElementById("inputCelsius").value=((temp-32)*5/9);
+  document.getElementById("inputKelvin").value=((temp-32)*5/9+273.15);
+}
+function CalKelvin() {
+  var temp = document.getElementById("inputKelvin").value;
+  document.getElementById("inputFarenheit").value=((temp-273.15)*9/5+32);
+  document.getElementById("inputCelsius").value=(temp-273.15);
+}
+</script>
+</body>
+</html>
