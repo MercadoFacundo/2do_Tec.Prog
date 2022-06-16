@@ -1,34 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hola</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <style>
-        table{border-collapse:collapse;}
-        td{
-        width:35px;
-        height:35px;
-        border:1px solid #000
-        }
-    </style>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>boceto</title>
 </head>
 <body>
-    <table id="Tabla">
-    </table>
+	<h1>Ejercicio 1 - Programacion III</h1>
+	<h2>Mercado Ivañez Facundo Miguel</h2>
+	
+	<input type="text" id="inputText">
+    
+    <button onclick="EnviarTexto()">Texto</button>
+
+	<p id="texto"></p>
 </body>
 <script>
-    for (let i = 0; i < 8; i++) {
-        $("#Tabla").append(`<tr id="columns${[i]}"></tr>`)
-        for (let j = 0; j < 8; j++) {
-            $(`#columns${i}`).append('<td id="rows"></td>')
-        }
+
+	function EnviarTexto(){
+        var Contenido = document.getElementById("inputText").value;
+		
+		Contenido = Contenido.replace(/ /g, "");
+	 
+		for (var i=0;i<Contenido.length;i++){
+			if(Contenido[i] != Contenido[Contenido.length-i-1]){
+				document.getElementById("texto").innerHTML="Esto es palíndromo";
+			}
+			document.getElementById("texto").innerHTML="Esto no es palíndromo";
+			break;
+		}
+        //document.getElementById("texto").innerHTML=Text;
+        //document.getElementById("inputText").value="";
     }
-    $("tr:even>td:odd").css("background-color","black");
-    $("tr:odd>td:even").css("background-color","black");
-</script>
 
-
+	/*function texto()
+	{
+		var palabra=prompt("Escribe una palabra").toLowerCase();
+	 
+		// eliminamos los espacios en blanco
+		palabra=palabra.replace(/ /g, "");
+	 
+		for (var i=0;i<palabra.length;i++){
+			if(palabra[i]!=palabra[palabra.length-i-1]){
+				return false;
+			}
+		}
+		return true;
+	}
+	 
+	if(EnviarTexto())
+	{
+		alert("Esto es palíndromo");
+	}else{
+		alert("Esto no es palíndromo")
+	}*/
+	</script>
 </html>

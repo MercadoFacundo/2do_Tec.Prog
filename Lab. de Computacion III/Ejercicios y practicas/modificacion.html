@@ -4,51 +4,59 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversor de temperaturas</title>
+    <title>tareas</title>
 </head>
-<h2>Conversor de temperaturas</h2>
-<p>Ingrese el valor que desea convertir:</p>
-
-<p>
-  <label>C°</label>
-  <input id="inputCelsius" type="number" placeholder="Celsius°">
-  <button onclick="Celsius()">Calcular</button>
-</p>
-<p>
-  <label>F°</label>
-  <input id="inputFarenheit" type="number" placeholder="Farenheit°">
-  <button onclick="Farenheit()">Calcular</button>
-</p>
-<p>
-  <label>K°</label>
-  <input id="inputKelvin" type="number" placeholder="Kelvin°">
-  <button onclick="Kelvin()">Calcular</button>
-</p>
-<button onclick="Borrar()">Limpiar</button>
-
-<script>
-function Celsius() {
-  var tempC = document.getElementById("inputCelsius").value;
-  document.getElementById("inputFarenheit").value=((tempC*9/5)+32);
-  document.getElementById("inputKelvin").value=(parseInt(tempC)+273);
-}
-function Farenheit() {
-  var tempF = document.getElementById("inputFarenheit").value;
-  document.getElementById("inputCelsius").value=((tempF-32)*5/9);
-  document.getElementById("inputKelvin").value=((tempF-32)*(5/9)+273);
-}
-function Kelvin() {
-  var tempK = document.getElementById("inputKelvin").value;
-  document.getElementById("inputCelsius").value=(parseInt(tempK)-273);
-  document.getElementById("inputFarenheit").value=((tempK-273)*9/5+32);
-}
-function Borrar() {
-  document.getElementById("inputKelvin").value=("");
-  document.getElementById("inputCelsius").value=("");
-  document.getElementById("inputFarenheit").value=("");
-}
-</script>
 <body>
+  <input id="nombreTarea" />
+  <button id="agregarTarea">Agregar</button>
+  <button id="editarTarea">Editar</button>
+  <ul id="lista"></ul>
+  <script>
+    let tareas = [];
+    let maxId = 0;
+    const lista = document.querySelector("#lista");
+    const nombreTarea = document.querySelector("#nombreTarea");
+    const agregarTarea = document.querySelector("#agregarTarea");
+    const editarTarea = document.querySelector("#editarTarea");
     
+
+    agregarTarea.onclick = () => {
+      const item = document.createElement("li");
+      item.textContent = nombreTarea.value;
+      item.contentEditable = false;
+
+      const nuevaTarea = {
+        id: ++maxId,
+        descripcion: nombreTarea.value,
+        lista: false,
+      };
+      tareas.push(nuevaTarea);
+
+
+      item.onclick = () => {
+        nuevaTarea.lista = !nuevaTarea.lista;
+        item.style["text-decoration"] = nuevaTarea.lista
+          ? "line-through"
+          : "";
+      };
+
+      const eliminar = document.createElement("button");
+      eliminar.textContent = "X";
+      eliminar.onclick = () => {
+        if (confirm(`¿Desea quitar la tarea "${nuevaTarea.descripcion}"?`)) {
+          tareas = tareas.filter((tarea) => tarea.id !== nuevaTarea.id);
+          item.remove();
+        }
+      };
+      editarTarea.onclick = () =>{
+
+        item.contentEditable = true;
+      }
+      
+
+      item.appendChild(eliminar);
+      lista.appendChild(item);
+    };
+  </script>
 </body>
 </html>
