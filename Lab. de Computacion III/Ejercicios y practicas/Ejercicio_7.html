@@ -1,72 +1,121 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 7</title>
+    <title>Ejercicio_7</title>
 </head>
+
+<h2>Tareas</h2>
+
 <body>
-    <h2>Tareas</h2>
-    <p>Borrar: Haciendo doble click en la tarea, se eliminara.</p>
-	<p>
-		<input type="text" id="tareaInput" placeholder="Agrega tu tarea">
-		<input type="button" class="boton" id="btn-agregar" value="Agregar Tarea">
-    </p>
-	<ul class="lista" id="lista">
-	</ul>
-		
+    <div>
+        <input id="inputTarea" placeholder="Agregar tarea..." type="text">
+        <button onclick="agregarTarea()">Agregar tarea</button>
+    </div>
+    <br>
+    <div>
+		<p>Seleccione el numero de la lista que desea eliminar.</p>
+        <input id="deleteTaskInput" type="number" placeholder="..." min="1">
+        <button onclick="eliminarTarea()">Borrar</button>
+    </div>
+    <div>
+        <ul id="list"></ul>
+    </div>
+
+</body>
+
 <script>
-   (function(){
-	// Variables
-	var lista = document.getElementById("lista");
-		tareaInput = document.getElementById("tareaInput");
-		btnNuevaTarea = document.getElementById("btn-agregar");
+    const data = []
 
-	// Funciones
-	var agregarTarea = function(){
-		var tarea = tareaInput.value,
-			nuevaTarea = document.createElement("li");
-			enlace = document.createElement("a");
-			contenido = document.createTextNode(tarea);
-            newCheckBox = document.createElement('input');
-            newCheckBox.type = "checkbox";
-        
-		if (tarea === "") {
-			tareaInput.setAttribute("placeholder", "Agrega una tarea valida");
-			tareaInput.className = "error";
-			return false;
-		}
+    let maxId = 0;
+    const list = document.querySelector("#list")
+    const inputValue = document.querySelector("#inputTarea")
 
-		// Agregamos el contenido al enlace
-		enlace.appendChild(contenido);
-		// Le establecemos un atributo href
-		enlace.setAttribute("href", "#");
-		// Agrergamos el enlace (a) a la nueva tarea (li)
-		nuevaTarea.appendChild(enlace);
-		// creamos el checkbox
-		lista.appendChild(nuevaTarea);
-        lista.appendChild(newCheckBox);
+    const agregarTarea = () => {
 
-		tareaInput.value = "";
-    
-		for (var i = 0; i <= lista.children.length -1; i++) {
-			lista.children[i].addEventListener("dblclick", function(){
-				this.parentNode.removeChild(this);
-			});  
-        }        
-	};
-    
-	var eleminarTarea = function(){
-		this.parentNode.removeChild(this);
-	};
+        const text = document.createElement('p');
+        const item = document.createElement('li');
 
-	// Agregar Tarea
-	btnNuevaTarea.addEventListener("click", agregarTarea);
-	// Borrando Elementos de la lista
-	for (var i = 0; i <= lista.children.length -1; i++) {
-		lista.children[i].addEventListener("dblclick", eleminarTarea);
-	}
-}());
+        let content = `${inputValue.value}`;
+
+        if (content.trim() !== "") {
+            const newTask = {
+                id: ++maxId,
+                name: content,
+                status: false,
+            }
+
+            data.push(newTask);
+
+            const touch = document.createElement("button");
+            touch.textContent = "Completar";
+            touch.setAttribute("id", `button-${newTask.id}`)
+            touch.setAttribute("onclick", `tareasCompletadas(${newTask.id})`);
+            text.appendChild(document.createTextNode(`${newTask.id} : ` + content));
+            item.appendChild(text);
+            item.appendChild(touch);
+            item.setAttribute("id", `${newTask.id}`);
+            list.appendChild(item); 1
+
+            inputValue.value = "";
+        } else { alert('Ingrese al menos un caracter') }
+
+    }
+
+    const eliminarTarea = () => {
+        let list = document.getElementById('list');
+        let selectItem = document.getElementById("deleteTaskInput");
+
+        if (selectItem.value) {
+            let option = confirm("¿Seguro que quiere eliminar?")
+            if (option === true) {
+                const itemId = parseInt(selectItem.value)
+                const element = data.find(item => itemId === item.id)
+                let index = data.indexOf(element)
+
+                data.splice(index, 1)
+
+                let item = document.getElementById(selectItem.value);
+                list.removeChild(item);
+                alert("Se elimino correctamente")
+            } else { alert("Eliminacion cancelada.") }
+        } else { alert("No se coloco ningun numero de lista...") }
+
+    }
+
+    const tareasCompletadas = (id) => {
+        const itemId = id.toString()
+        let item = document.getElementById(itemId);
+        let button = document.getElementById(`button-${itemId}`)
+        const element = data.find(item => id === item.id)
+
+        if (element.status === false) {
+            element.status = true
+            item.style["text-decoration"] = "line-through";
+            button.textContent = "x"
+        } else {
+            element.status = false
+            item.style["text-decoration"] = "none";
+            button.textContent = "Completar"
+        }
+    }
+
+    for (i = 0; i < data.length; i++) {
+
+        const text = document.createElement('p')
+        const item = document.createElement('li')
+
+        let content = `${data[i].id} : ${data[i].name}`
+        text.appendChild(document.createTextNode(content))
+        item.appendChild(text);
+        item.style["text-decoration"] = data[i].status ? "line-through" : "";
+        list.appendChild(item);
+
+    }
+
 </script>
+
 </html>

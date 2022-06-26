@@ -1,62 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tareas</title>
-</head>
-<body>
-  <input id="nombreTarea" />
-  <button id="agregarTarea">Agregar</button>
-  <button id="editarTarea">Editar</button>
-  <ul id="lista"></ul>
-  <script>
-    let tareas = [];
-    let maxId = 0;
-    const lista = document.querySelector("#lista");
-    const nombreTarea = document.querySelector("#nombreTarea");
-    const agregarTarea = document.querySelector("#agregarTarea");
-    const editarTarea = document.querySelector("#editarTarea");
-    
 
-    agregarTarea.onclick = () => {
-      const item = document.createElement("li");
-      item.textContent = nombreTarea.value;
-      item.contentEditable = false;
+<html><head><title>Ejemplo aprenderaprogramar.com</title><meta charset="utf-8">
 
-      const nuevaTarea = {
-        id: ++maxId,
-        descripcion: nombreTarea.value,
-        lista: false,
-      };
-      tareas.push(nuevaTarea);
+<style type="text/css"> label{display:block;margin:5px;}</style>
 
+<script type="text/javascript">
 
-      item.onclick = () => {
-        nuevaTarea.lista = !nuevaTarea.lista;
-        item.style["text-decoration"] = nuevaTarea.lista
-          ? "line-through"
-          : "";
-      };
+ window.onload = function () {             var ejemplo = document.getElementById('ejemplo');
 
-      const eliminar = document.createElement("button");
-      eliminar.textContent = "X";
-      eliminar.onclick = () => {
-        if (confirm(`¿Desea quitar la tarea "${nuevaTarea.descripcion}"?`)) {
-          tareas = tareas.filter((tarea) => tarea.id !== nuevaTarea.id);
-          item.remove();
-        }
-      };
-      editarTarea.onclick = () =>{
+                ejemplo.addEventListener("click", ejecutarEjemplo); }
 
-        item.contentEditable = true;
-      }
-      
+function ejecutarEjemplo () {
 
-      item.appendChild(eliminar);
-      lista.appendChild(item);
-    };
-  </script>
-</body>
-</html>
+var formulario1 = document.formularioContacto; dimeDatos(formulario1);
+
+var formulario2 = document.formularioReclamacion; dimeDatos(formulario2);
+
+}
+
+function dimeDatos(formulario){
+
+var msg=''; msg = msg + '\n\nElemento input del formulario '+formulario.name+ ' tiene id: '+ formulario.nombre.id;
+
+msg = msg + '\n\nOtro elemento input del formulario '+formulario.name+ ' tiene id: '+ formulario.apellidos.id;
+
+alert (msg+'\n\n');
+
+}
+
+</script></head>
+
+<body><div id="cabecera"><h2>Cursos aprenderaprogramar.com</h2><h3>Ejemplos JavaScript</h3></div>
+
+<div style="color:blue; margin:20px;" id ="ejemplo">Pulsa aquí</div>
+
+<form name ="formularioContacto" method="get" action="accion1.html">
+
+<h2>Formulario de contacto</h2>
+
+<label>Nombre:<input id="nombreFormContacto" type="text" name="nombre" /></label>
+
+<label>Apellidos:<input id="apellidosFormContacto" type="text" name="apellidos" /></label>
+
+<label><input id ="botonEnvio1" type="submit" value="Enviar"></label>
+
+</form>
+
+<form name ="formularioReclamacion" method="get" action="accion2.html">
+
+<h2>Formulario de reclamación</h2>
+
+<label>Nombre:<input id="nombreFormReclamacion" type="text" name="nombre" /></label>
+
+<label>Apellidos:<input id="apellidosFormReclamacion" type="text" name="apellidos" /></label>
+
+<label><input id="botonEnvio2" type="submit" value="Enviar"></label>
+
+</form>
+</body></html>

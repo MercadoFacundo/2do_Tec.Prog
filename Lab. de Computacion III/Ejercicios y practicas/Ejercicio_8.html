@@ -1,81 +1,125 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 8</title>
+    <title>Ejercicio_8</title>
 </head>
+
+<h2>Tipo de agenda</h2>
+
 <body>
-    
-	<p class="formulario" action="">
-		<input type="text" id="tareaInput" placeholder="Agrega tu tarea">
-		<input type="button" class="boton" id="btn-agregar" value="Agregar Tarea">
-    </p>
-	
-	<ul class="lista" id="lista">
-	</ul>
-		
+    <div>
+		<input id="inputNombre" placeholder="Ingrese nombre..." type="text" required>
+		<input id="inputApellido" placeholder="Ingrese apellido..." type="text">
+		<input id="inputEdad" placeholder="Ingrese edad..." type="number">
+		<button onclick="agregarPersona()">Agregar</button>
+    </div>
+    <br>
+    <div id="persona">
+		<p>Seleccione el numero de la lista que desea eliminar.</p>
+        <input id="inputEliminar" type="number" placeholder="..." min="1">
+        <button onclick="Eliminar()">Borrar</button>
+		<button onclick="editarLista()">Editar</button>
+		<button onclick="Aceptar()" style=display:none id="aceptar">Aceptar</button>
+    </div>
+    <div>
+        <ul id="list" contenteditable="false"></ul>
+    </div>
+
+</body>
+
 <script>
-   (function(){
-	// Variables
-	var lista = document.getElementById("lista"),
-		tareaInput = document.getElementById("tareaInput"),
-		btnNuevaTarea = document.getElementById("btn-agregar");
+    var data = []
 
-	// Funciones
-	var agregarTarea = function(){
-		var tarea = tareaInput.value,
-			nuevaTarea = document.createElement("li"),
-			enlace = document.createElement("a"),
-			contenido = document.createTextNode(tarea);
+    let maxId = 0;
+    const list = document.querySelector("#list")
+    const impNombre = document.querySelector("#inputNombre")
+	const impApellido = document.querySelector("#inputApellido")
+	const impEdad = document.querySelector("#inputEdad")
 
-		if (tarea === "") {
-			tareaInput.setAttribute("placeholder", "Agrega una tarea valida");
-			tareaInput.className = "error";
-			return false;
-		}
+    const agregarPersona = () => {
 
-		// Agregamos el contenido al enlace
-		enlace.appendChild(contenido);
-		// Le establecemos un atributo href
-		enlace.setAttribute("href", "#");
-		// Agrergamos el enlace (a) a la nueva tarea (li)
-		nuevaTarea.appendChild(enlace);
-		// Agregamos la nueva tarea a la lista
-		lista.appendChild(nuevaTarea);
+        const text = document.createElement('p');
+        const item = document.createElement('li');
+		
+		item.setAttribute("id", "editable")
 
-		tareaInput.value = "";
+        let content = `${impNombre.value}`;
+		let content1 = `${impApellido.value}`;
+		let content2 = `${impEdad.value}`;
 
-		for (var i = 0; i <= lista.children.length -1; i++) {
-			lista.children[i].addEventListener("click", function(){
-				this.parentNode.removeChild(this);
-			});
-		}
+        if (content.trim() !== "" && content1.trim() !== "" && content2.trim() !== "") {
+            const newTask = {
+                id: ++maxId,
+                name: content,
+				lastname: content1,
+				age: content2,
+                status: false,
+            }
 
-	};
-    /*
-	var comprobarInput = function(){
-		tareaInput.className = "";
-		teareaInput.setAttribute("placeholder", "Agrega tu tarea");
-	};*/
+            data.push(newTask);
 
-	var eleminarTarea = function(){
-		this.parentNode.removeChild(this);
-	};
+            const touch = document.createElement("button");
+            text.appendChild(document.createTextNode(`${newTask.id} : ` + "Nombre: "+ content + " Apellido: " + content1 + " Edad: " + content2 + " Años"));
+            item.appendChild(text);
+            item.setAttribute("id", `${newTask.id}`);
+            list.appendChild(item); 1
 
-	// Eventos
+            impNombre.value = "";
+			impApellido.value = "";
+			impEdad.value="";
+			
+        } else { alert('Ingrese al menos un caracter numerico. No se permiten letras.') }
 
-	// Agregar Tarea
-	btnNuevaTarea.addEventListener("click", agregarTarea);
+    }
 
-	// Comprobar Input
-	tareaInput.addEventListener("click", comprobarInput);
+    const Eliminar = () => {
+        let list = document.getElementById('list');
+        let selectItem = document.getElementById("inputEliminar");
 
-	// Borrando Elementos de la lista
-	for (var i = 0; i <= lista.children.length -1; i++) {
-		lista.children[i].addEventListener("click", eleminarTarea);
+        if (selectItem.value) {
+            let option = confirm("¿Seguro que quiere eliminar?")
+            if (option === true) {
+                const itemId = parseInt(selectItem.value)
+                const element = data.find(item => itemId === item.id)
+                let index = data.indexOf(element)
+
+                data.splice(index, 1)
+
+                let item = document.getElementById(selectItem.value);
+                list.removeChild(item);
+                alert("Se elimino correctamente")
+            } else { alert("Eliminacion cancelada.") }
+        } else { alert("No se coloco ningun numero de lista...") }
+
+    }
+
+	const editarLista = () => {
+		document.getElementById("list").contentEditable=true
+		document.getElementById("aceptar").style.display=""
+
 	}
-}());
+	const Aceptar = () => {
+		document.getElementById("list").contentEditable=false
+		document.getElementById("aceptar").style.display="none"
+	}
+
+    for (i = 0; i < data.length; i++) {
+
+        const text = document.createElement('p')
+        const item = document.createElement('li')
+
+        let content = `${data[i].id} : ${data[i].name}`
+        text.appendChild(document.createTextNode(content))
+        item.appendChild(text);
+        item.style["text-decoration"] = data[i].status ? "line-through" : "";
+        list.appendChild(item);
+
+    }
+
 </script>
+
 </html>
