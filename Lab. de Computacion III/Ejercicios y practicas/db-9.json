@@ -1,0 +1,19 @@
+{
+  "tareas": [
+    {
+      "descripcion": "bienvenidos al imalaya",
+      "lista": false,
+      "id": 1
+    },
+    {
+      "descripcion": "estudiar si no el profe me reta",
+      "lista": true,
+      "id": 2
+    },
+    {
+      "descripcion": "que me apruebe dice..",
+      "lista": false,
+      "id": 3
+    }
+  ]
+}
