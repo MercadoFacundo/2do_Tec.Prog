@@ -1,0 +1,37 @@
+1- Para iniciar un nuevo proyecto
+
+npm init -y
+
+2- Cambiar el nombre del index.js al archivo que tengamos en esa carpeta
+3- agregar "type" entre main y debug
+"main": "main.js",
+  "type": "module",
+debug
+4-npm i express
+
+5- instalamos un paquete para evitar estar cerrando cuando hacemos alguna actualizacion "package.json"
+npm i -D nodemon
+
+6-Es para hacer arrancar el nodemon
+npx nodemon main.js (nombre del archivo a usar)
+
+7- modificamos una linea de codigo de package.json
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+deberia quedar
+
+"scripts": {
+    "dev": "nodemon main.js"
+  },
+
+npm run dev (lo que hace esto es ejecutar lo que se encuentra en la linea de script del package.json)
+
+localhost:3000/tareas
+dominio:puerto/recurso
+
+si queremos abrir en otra carpeta para iniciarlo sin copiar la carpeta de node_module
+npm i
+
+despues para correrlo npm run dev

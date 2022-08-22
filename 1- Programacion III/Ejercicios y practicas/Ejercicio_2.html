@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* Realizar un método que englobe tanto el producto como
+        la suma, utilizando solamente un foreach.
+        tipo (String) => "Suma" ó "Producto".
+        BONUS: Puede agregar las dos operaciones faltantes (Resta y División)
+        Condiciones : No se puede dividir por cero y el Divisor tiene que ser
+        mayor que el dividendo.*/
+        let numbers = [1,3,5,2]
+
+        class Operacion {
+            constructor(numeros,operador){
+                this.numeros = numeros
+                this.operador = operador  
+            }
+
+            get operar(){
+                return this.calcOperation
+            }
+
+            calcOperation(){
+                var suma = 0;
+                var producto = 1;
+                    this.numeros.forEach(element => {
+                        switch (this.operador){
+                            case "suma": 
+                                suma += element;
+                                break;
+                            case "producto":
+                                producto *= element;
+                                break;
+                            case "resta":
+                                break;
+                            case "division":
+                                break;
+                            default: 
+                                console.log("Operation undefined. Choice suma, producto, resta or division")
+                                break;
+                        }
+                    });
+                    return suma || producto;
+            }
+        }
+
+        var operationProducto = new Operacion(numbers,"producto");
+        var operationSuma = new Operacion(numbers,"suma");
+        console.log("Resultado del producto: ",operationProducto.operar())
+        console.log("Resultado de la suma: ",operationSuma.operar())
+    </script>
+</body>
+</html>

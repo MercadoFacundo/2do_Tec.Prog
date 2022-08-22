@@ -1,0 +1,91 @@
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+  }
+
+#body {
+
+    background-color: #c9c9c9;
+}
+  
+.box form {
+    font-family:sans-serif;
+    font-size: 12px;
+    color: white;
+    font-weight: normal;
+    width: 250px;
+    min-height: 500px;
+    padding: 40px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    background-color: #36a5a3;
+  }
+
+.box .formLogin {
+    font-family:sans-serif;
+    font-size: 12px;
+    color: white;
+    font-weight: normal;
+    width: 230px;
+    min-height: 180px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    background-color: #862754;
+  }
+
+.inputClass {
+      border-radius: 5px;
+      padding: 10px;
+      border: 1px solid white;
+  }
+
+.container {
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid white;
+    width: 200px;
+  }
+
+.textLogin {
+      margin-top:5px;
+      margin-bottom: 5px;
+  }
+  
+.inputClassButton {
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid white;
+    margin-top: 10px;
+}
+
+.divider {
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+#Salida {
+ background: white;
+ width:500px;
+ height:100px;
+ font-family: sans-serif;
+ margin-top: 40px;
+ margin-bottom: 40px;
+ border-radius: 10px;
+ padding: 20px;
+}
+
+.Salida {
+  background: white;
+  width:200px;
+  font-family: sans-serif;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 20px;
+ }

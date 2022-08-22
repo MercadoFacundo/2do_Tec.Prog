@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Formularios</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<script>
+    $(document).ready(function () {
+        // Ocultar el Login si existe el token en el LocalStorage 
+        
+        // curl --location --request POST 'http://kiwicode.tech:3000/auth' \ --header 'Content-Type: application/json' \ --data-raw '{ "mail":"graciajorge.sist@gmail.com", "password": "123123" }' 
+        $("#Login").click(
+        function(){
+            var usuario = $("#user").val();
+            var password = $("#pass").val();
+            $.ajax({
+                url: "http://kiwicode.tech:3000/auth",
+                type: "POST",
+                data: {
+                    "mail": usuario,
+                    "password": password
+                },
+                success: function (result) {
+                    alert("Ingreso Correcto!");
+                    localStorage.setItem("token",result.data.token);
+                    $("#page").show();
+                    $("#loginPage").hide();
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(XMLHttpRequest.responseJSON.data.errMessage);
+                }
+            });
+        });
+
+        $("#getDatos").click(
+        function(){
+            $.ajax({
+                url: "http://kiwicode.tech:3000/roles",
+                type: "GET",
+                headers: {
+                    Authorization : localStorage.getItem("token")
+                },
+                data: { },
+                success: function (result) {
+                    $("#resultDatos").val(JSON.stringify(result));
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(XMLHttpRequest.responseJSON.data.errMessage);
+                }
+            });
+        });
+
+        // curl --location --request POST 'http://kiwicode.tech:3000/roles' \ --header 'Content-Type: application/json' \ --data-raw '{ "descripcion": "Rolprueba" }' 
+        $("#postDescripcion").click(
+        function(){
+            var descripcion = $("#descripcion").val();
+            $.ajax({
+                url: "http://kiwicode.tech:3000/roles",
+                type: "POST",
+                headers: {
+                    Authorization : localStorage.getItem("token")
+                },
+                data: { "descripcion" : descripcion},
+                success: function (result) {
+                    alert("Se guardó Correctamente!");
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(XMLHttpRequest.responseJSON.data.errMessage);
+                }
+            });
+        });
+
+        // curl --location --request DELETE 'http://kiwicode.tech:3000/roles/4' \ --header 'Content-Type: application/json'
+        $("#deleteRol").click(
+        function(){
+            var idRol = $("#idRol").val();
+            $.ajax({
+                url: "http://kiwicode.tech:3000/roles/" + idRol,
+                type: "DELETE",
+                headers: {
+                    Authorization : localStorage.getItem("token")
+                },
+                data: { },
+                success: function (result) {
+                    alert("Se ha eliminado el Rol ID: "+ idRol);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(XMLHttpRequest.responseJSON.data.errMessage);
+                }
+            });
+        });
+
+        // curl --location --request PUT 'http://kiwicode.tech:3000/roles/3' \ --header 'Content-Type: application/json' \ --data-raw '{ "descripcion": "Clientes" }'
+
+    });
+</script>
+
+<body id="body">
+    <div class="box">
+        <div class="formLogin" id="loginPage">
+            <div class="container">
+                <div class="textLogin">Usuario</div>
+                <input class="inputClass" type="text" id="user" name="loginName" placeholder="Ingrese Nombre" required /> <br>
+                <div class="textLogin">Password</div>
+                <input class="inputClass" type="password" id="pass" name="loginPassword" placeholder="Ingrese Password" required />
+                <br>
+            </div>
+            <button class="inputClassButton" name="boton" id="Login">Ingresar</button> <br>
+        </div>
+
+        <div class="formLogin" id="page" hidden>
+            <div class="container">
+                    Bienvenido a la pagina Principal.
+                    <button class="inputClassButton" name="boton" id="getDatos">Traer Datos</button> <br>
+                    <textarea id="resultDatos" style="width:400px; height:100px;"> </textarea>
+            </div>
+            <div class="container">
+                Descripción
+                <input class="inputClass" type="text" id="descripcion" name="descripcion" placeholder="Ingrese Descripción"/>
+                <button class="inputClassButton" name="boton" id="postDescripcion">Grabar Descripción</button> <br>
+            </div>
+            <div class="container">
+                Id Rol
+                <input class="inputClass" type="text" id="idRol" name="idRol" placeholder="Ingrese Id Rol"/>
+                <button class="inputClassButton" name="boton" id="deleteRol">Borrar Rol</button> <br>
+            </div>
+            <div class="container">
+                Modificar Rol
+                <input class="inputClass" type="text" id="idRol" name="idRol" placeholder="Ingrese Id Rol"/>
+                <input class="inputClass" type="text" id="descripcion" name="descripcion" placeholder="Ingrese Descripción"/>
+                <button class="inputClassButton" name="boton" id="updateRol">Modificar Rol</button> <br>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

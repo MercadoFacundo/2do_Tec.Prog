@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_7</title>
+</head>
+
+<h2>Tareas</h2>
+
+<body>
+    <div>
+        <input id="inputTarea" placeholder="Agregar tarea..." type="text">
+        <button onclick="agregarTarea()">Agregar tarea</button>
+    </div>
+    <br>
+    <div>
+		<p>Seleccione el numero de la lista que desea eliminar.</p>
+        <input id="deleteTaskInput" type="number" placeholder="..." min="1">
+        <button onclick="eliminarTarea()">Borrar</button>
+    </div>
+    <div>
+        <ul id="list"></ul>
+    </div>
+
+</body>
+
+<script>
+    const data = []
+
+    let maxId = 0;
+    const list = document.querySelector("#list")
+    const inputValue = document.querySelector("#inputTarea")
+
+    const agregarTarea = () => {
+
+        const text = document.createElement('p');
+        const item = document.createElement('li');
+
+        let content = `${inputValue.value}`;
+
+        if (content.trim() !== "") {
+            const newTask = {
+                id: ++maxId,
+                name: content,
+                status: false,
+            }
+
+            data.push(newTask);
+
+            const touch = document.createElement("button");
+            touch.textContent = "Completar";
+            touch.setAttribute("id", `button-${newTask.id}`)
+            touch.setAttribute("onclick", `tareasCompletadas(${newTask.id})`);
+            text.appendChild(document.createTextNode(`${newTask.id} : ` + content));
+            item.appendChild(text);
+            item.appendChild(touch);
+            item.setAttribute("id", `${newTask.id}`);
+            list.appendChild(item); 1
+
+            inputValue.value = "";
+        } else { alert('Ingrese al menos un caracter') }
+
+    }
+
+    const eliminarTarea = () => {
+        let list = document.getElementById('list');
+        let selectItem = document.getElementById("deleteTaskInput");
+
+        if (selectItem.value) {
+            let option = confirm("¿Seguro que quiere eliminar?")
+            if (option === true) {
+                const itemId = parseInt(selectItem.value)
+                const element = data.find(item => itemId === item.id)
+                let index = data.indexOf(element)
+
+                data.splice(index, 1)
+
+                let item = document.getElementById(selectItem.value);
+                list.removeChild(item);
+                alert("Se elimino correctamente")
+            } else { alert("Eliminacion cancelada.") }
+        } else { alert("No se coloco ningun numero de lista...") }
+
+    }
+
+    const tareasCompletadas = (id) => {
+        const itemId = id.toString()
+        let item = document.getElementById(itemId);
+        let button = document.getElementById(`button-${itemId}`)
+        const element = data.find(item => id === item.id)
+
+        if (element.status === false) {
+            element.status = true
+            item.style["text-decoration"] = "line-through";
+            button.textContent = "x"
+        } else {
+            element.status = false
+            item.style["text-decoration"] = "none";
+            button.textContent = "Completar"
+        }
+    }
+
+    for (i = 0; i < data.length; i++) {
+
+        const text = document.createElement('p')
+        const item = document.createElement('li')
+
+        let content = `${data[i].id} : ${data[i].name}`
+        text.appendChild(document.createTextNode(content))
+        item.appendChild(text);
+        item.style["text-decoration"] = data[i].status ? "line-through" : "";
+        list.appendChild(item);
+
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Formularios</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./main.css'>
+</head>
+
+<script>
+    /// Registrar los movimiento del cursor.
+    /// Registrar y conocer la posición del cubo.
+    /// Cambiar el color del Cubo con un botón y modificar ese atributo.
+
+    function Cursor(arriba,abajo,izquierda,derecha){
+        this.arriba = arriba,
+        this.abajo = abajo,
+        this.izquierda = izquierda,
+        this.derecha = derecha
+    }
+
+    var cursorObj = new Cursor(0,0,0,0);
+
+    var marginTop = 0;
+    var marginLeft = 0;
+    function onclickUp(){
+        self.marginTop = self.marginTop-10;
+        cursorObj.arriba++;
+        document.getElementById("Cube").style.marginTop=self.marginTop+"px"
+    }
+    function onclickDown(){
+        self.marginTop = self.marginTop+10;
+        document.getElementById("Cube").style.marginTop=self.marginTop+"px"
+    }
+    function onclickLeft(){
+        self.marginLeft = self.marginLeft-10;
+        document.getElementById("Cube").style.marginLeft=self.marginLeft+"px"
+    }
+    function onclickRight(){
+        self.marginLeft = self.marginLeft+10;
+        document.getElementById("Cube").style.marginLeft=self.marginLeft+"px"
+    }
+
+</script>
+
+<body id="body">
+    <div class="box" >
+        <button class="inputClass" onclick="onclickUp()">^</button>
+    </div>
+    <div class="box" >
+        <button class="inputClass" onclick="onclickLeft()"><</button> <br>
+        <button class="inputClass" onclick="onclickRight()">></button> <br>
+    </div>
+    <div class="box" >
+        <button class="inputClass" onclick="onclickDown()">v</button>
+    </div>
+    <div class="box" >
+        <div class="arena">
+            <div class="box" id="Cube"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+</htl>

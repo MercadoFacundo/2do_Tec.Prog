@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Class</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./main.css'>
+</head>
+
+<script>
+
+    // class Cursor{
+    //     constructor(arriba,abajo,izquierda,derecha){
+    //         this.arriba = arriba,
+    //         this.abajo = abajo,
+    //         this.izquierda = izquierda,
+    //         this.derecha = derecha
+    //     }
+
+    //     sumarIquierda(){
+    //         this.izquierda++;
+    //     }
+
+    // }
+
+    // var cursorObj = new Cursor(0,0,0,0);
+    // cursorObj.sumarIquierda();
+    // console.log(cursorObj.izquierda);
+
+    class Operacion{
+        
+        constructor(numeros){
+            this.numeros = numeros;
+        }
+
+        sumar(){
+            var suma = 0;
+            this.numeros.forEach(element => {
+                // suma = suma + element;
+                suma += element;
+            });
+            return suma;
+        }
+
+        multiplicar(){
+            var producto = 1;
+            this.numeros.forEach(element => {
+                // producto = producto * element;
+                producto *= element;
+            });
+            return producto;
+        }
+        
+        /* Realizar un método que englobe tanto el producto como 
+        la suma, utilizando solamente un foreach.
+        tipo (String) => "Suma" ó "Producto".
+        BONUS: Puede agregar las dos operaciones faltantes (Resta y División)
+        Condiciones : No se puede dividir por cero y el Divisor tiene que ser
+        mayor que el dividendo.*/
+
+        operar(tipo){
+
+        }
+    }
+
+    var ObjetoOp = new Operacion([2,2,3]);
+    console.log(ObjetoOp.numeros);
+    const sumaOut = ObjetoOp.sumar();
+    console.log(ObjetoOp.operar("Sumar"));
+    console.log(ObjetoOp.multiplicar());
+
+
+</script>
+
+<body id="body">
+</body>
+
+</html>
+</htl>

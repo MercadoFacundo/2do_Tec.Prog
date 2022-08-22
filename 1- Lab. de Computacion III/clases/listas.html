@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="lista"></ul>
+    <script>
+const arreglo = [
+    {descripcion: "tarea 1", lista: true},
+    {descripcion: "tarea 2", lista: false},
+    {descripcion: "tarea 3", lista: true},
+]
+const lista = document.querySelector("#lista");
+
+
+
+const item = document.createElement("li");
+        item.textContent = "item 1";
+
+        const item2 = document.createElement("li");
+        item2.textContent = "item 2";
+        lista.appendChild(item);
+        lista.appendChild(item2);
+
+    </script>
+</body>
+</html>

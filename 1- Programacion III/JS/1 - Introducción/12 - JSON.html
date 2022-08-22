@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JSON</title>
+</head>
+
+<body>
+    <script>
+
+        var en = {
+            "0" : "cero",
+            "1" : "uno"
+        }
+        
+        var fruta = {
+            "nombre":"Banana",
+            "cantidad":5,
+            "precio":20
+        };
+
+        console.log("Nombre de la Fruta", fruta.nombre);
+
+        var frutas = [{
+            "nombre":"Banana",
+            "cantidad":5,
+            "precio":20
+        },
+        {
+            "nombre": {
+                "id":1,
+                "descripcion": "manzana"
+            },
+            "cantidad":3,
+            "precio":50
+        }];
+        
+        //Recorrer 
+        fruta[1].
+        frutas.forEach(function(fruta, posicion, array) {
+            console.log("Nombre ["+posicion+"]", fruta.nombre);
+            console.log("Cantidad ["+posicion+"]", fruta.cantidad);
+            console.log("Precio ["+posicion+"]", fruta.precio);
+        });
+
+    </script>
+
+</body>
+</html>
+

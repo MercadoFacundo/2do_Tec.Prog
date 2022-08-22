@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Switch Case</title>
+</head>
+
+<body>
+    <script>
+
+        var juegoNombre = "Counter-Strike";
+        var cantidadJugadores = 8;
+        var cantidad_jugadores = 10;
+
+        // Condicional Normal
+        if (juegoNombre == "Counter") {
+            console.log("Nombre Incorrecto");
+
+        } else {
+            console.log("Nombre Correcto");
+            if (cantidadJugadores > 0) {
+                console.log("Hay " + cantidadJugadores + " Jugadores");
+            } else {
+                console.log("No hay Jugadores Conectados");
+            }
+        }
+
+        // Operador Ternario
+        // Un resultado de la condicion
+        var val = true;
+        console.log(val && "hola");
+
+        juegoNombre == "Counter" ? console.log("True") : console.log("False");
+
+        // Varios resultados de la condicion
+        juegoNombre == "Counter" ? (console.log("True"), alert("True!")) : (console.log("False"), alert("False!"));
+
+    </script>
+</body>
+
+</html>
