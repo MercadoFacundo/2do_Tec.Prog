@@ -35,3 +35,10 @@ si queremos abrir en otra carpeta para iniciarlo sin copiar la carpeta de node_m
 npm i
 
 despues para correrlo npm run dev
+
+--------------------------------------------------------------------------------------------------
+para hacer la conexion con la base necesitamos instalar estas dependencias
+npm i dotenv - Variable de entorno, nos permite crear un archivo .env y cargarlo en process.env. En este caso
+              lo usaremos para enviar los datos para ingresar a la base de datos
+npm i mysql2 - Es el controlador de mysql para poder enviar peticiones.
+npm i sequelize - nos permite manipular la base de dato.
