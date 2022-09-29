@@ -13,10 +13,3 @@ export const db = new Sequelize(
     dialect: "mysql",
   }
 );
-/*
-Sequelize.authenticate().then(() => {
-  console.log('La conexio se a establecido exitosamente');
-}).catch((error) => {
-  console.error('No se pudo conectar con la base dedatos', error);
-});
-*/

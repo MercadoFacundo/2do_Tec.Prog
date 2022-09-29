@@ -1,0 +1,15 @@
+select * from socios
+select nombre, apellido from socios
+
+select * from socios where nombre = "jorge"
+select * from socios where direccion = "Siempre Viva 123"
+
+select * from socios where dni > 15000000
+
+select * from socios where (dni > 15000000 and nombre = "jose")
+
+select * from socios where (dni > 15000000 or nombre = "jose")
+
+
+select * from socios order by dni ASC
+select * from socios group by nombre
